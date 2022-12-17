@@ -1,4 +1,5 @@
-import { currencyCryptoData } from "api";
+import { currencyCryptoData } from "./../../../api/index";
+// import { currencyCryptoData } from "api";
 import { TData, TDataAverage, TNormalAverageValue, TResetData } from "type";
 
 export const resetData: TResetData = async (date, fn, req, res) => {

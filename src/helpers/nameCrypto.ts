@@ -1,7 +1,7 @@
 import * as fs from "fs/promises";
 import path from "path";
 
-const URL_DB = "../db/cruptoName.json";
+const URL_DB = "../../db/cruptoName.json";
 
 const urlPath = path.join(__dirname, URL_DB);
 const failDBName = fs.readFile(urlPath, { encoding: "utf8" });

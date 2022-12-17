@@ -1,6 +1,9 @@
-import { currencyCryptoData } from "api";
-import { trend } from "api/coinPaprika";
-import { pool } from "app";
+import { trend } from "./../../../api/coinPaprika";
+import { currencyCryptoData } from "./../../../api/index";
+import { pool } from "./../../../app";
+// import { currencyCryptoData } from "api";
+// import { trend } from "api/coinPaprika";
+// import { pool } from "app";
 import { TData, TRouterFn } from "type";
 import { resetData, averageValue } from "./popular.service";
 

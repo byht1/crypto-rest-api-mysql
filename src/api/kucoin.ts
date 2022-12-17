@@ -1,5 +1,6 @@
+import { dataCorrection } from "./../helpers/dataCorrection";
 import axios from "axios";
-import { dataCorrection } from "helpers";
+// import { dataCorrection } from "helpers";
 import { IKucoin, TData } from "type";
 
 const URL = "https://api.kucoin.com/api/v1/prices";

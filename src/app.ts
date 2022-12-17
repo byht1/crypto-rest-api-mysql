@@ -6,22 +6,17 @@ import mysql from "mysql";
 import { routerCrypto } from "./routes";
 import { INewError } from "type";
 import dotenv from "dotenv";
-import { currencyCryptoData } from "api";
 
 dotenv.config();
 
 const {
-  PORT = 5001,
+  PORT = 5000,
   DB_USER,
   DB_PASSWORD,
   DB_NAME,
   DB_HOST,
   // INSTANCE_CONNECTION_NAME,
 } = process.env;
-console.log("🚀  DB_HOST", DB_HOST);
-console.log("🚀  DB_NAME", DB_NAME);
-console.log("🚀  DB_PASSWORD", DB_PASSWORD);
-console.log("🚀  DB_USER", DB_USER);
 
 export const pool = mysql.createPool({
   host: DB_HOST,
@@ -36,16 +31,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/crypto", routerCrypto);
-
-app.use("/api/test", async (req, res) => {
-  try {
-    const data = await currencyCryptoData();
-
-    res.json(data);
-  } catch (error) {
-    res.json(error);
-  }
-});
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });

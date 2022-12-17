@@ -1,4 +1,5 @@
-import { pool } from "app";
+import { pool } from "./../app";
+// import { pool } from "app";
 import { coinbase } from "./coinbase";
 import { coinmarketcap } from "./coinmarketcap";
 import { coinPaprika } from "./coinPaprika";

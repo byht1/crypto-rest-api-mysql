@@ -1,5 +1,7 @@
-import { currencyCryptoData } from "api";
-import { pool } from "app";
+import { pool } from "./../../../app";
+import { currencyCryptoData } from "./../../../api/index";
+// import { currencyCryptoData } from "api";
+// import { pool } from "app";
 import { TData, TRouterFn } from "type";
 import { averageValue, resetData } from "../popular/popular.service";
 

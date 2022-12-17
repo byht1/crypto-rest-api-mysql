@@ -1,7 +1,8 @@
+import { nameCrypto } from './../helpers/nameCrypto';
 import axios from "axios";
 import dotenv from "dotenv";
 
-import { nameCrypto } from "helpers";
+// import { nameCrypto } from "helpers";
 import { ICoinmarketcap, TData } from "type";
 
 dotenv.config();
