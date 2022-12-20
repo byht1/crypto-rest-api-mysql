@@ -1,7 +1,6 @@
-import { nameCrypto } from "./../helpers/nameCrypto";
 import axios from "axios";
 
-// import { nameCrypto } from "helpers";
+import { nameCrypto } from "helpers";
 import { ICoinStats, TData } from "type";
 
 const URL = "https://api.coinstats.app/public/v1/coins?skip=0";
