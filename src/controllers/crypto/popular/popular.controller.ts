@@ -9,10 +9,17 @@ export const trendDefault: string[] = ["BTC", "ETH", "USDT", "USDC", "BNB"];
 export const crypto: TRouterFn = async (req, res) => {
   const { apiName } = req.query;
   const queryTrend = trend.length ? trend : trendDefault;
-  const query = `SELECT * FROM ${tableName} WHERE symbol = ? OR symbol = ? OR symbol = ? OR symbol = ? OR symbol = ? ${
-    apiName ? `AND api = "${apiName}"` : ""
-  }`;
-  // const query = `SELECT * FROM crypto15 WHERE symbol = "${trend[0]}" OR symbol = "${trend[1]}" OR symbol = "${trend[2]}" OR symbol = "${trend[3]}" OR symbol = "${trend[4]}"`;
+
+  const query = `SELECT * FROM ${tableName} WHERE symbol = ? ${queryTrend.reduce(
+    (acc, x, i) => {
+      if (i === 0) return acc;
+
+      acc += "OR symbol = ?";
+
+      return acc;
+    },
+    ""
+  )} ${apiName ? `AND api = "${apiName}"` : ""}`;
 
   pool.query(query, queryTrend, async (err, result) => {
     if (err) throw err;

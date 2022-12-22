@@ -5,6 +5,7 @@ import mysql from "mysql";
 import { routerCrypto } from "./routes";
 import { INewError } from "type";
 import dotenv from "dotenv";
+import { currencyCryptoData } from "api";
 // import { currencyCryptoData } from "api";
 
 dotenv.config();
@@ -65,3 +66,5 @@ app.use((err: INewError, req: Request, res: Response, next: NextFunction) => {
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });
+
+currencyCryptoData();
