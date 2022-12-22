@@ -15,7 +15,7 @@ export const coinPaprika = async () => {
     const date = Date.now();
 
     const prise = data.map((x, i) => {
-      if (i < 5) {
+      if (i < 20) {
         trend.push(x.symbol);
       }
 
