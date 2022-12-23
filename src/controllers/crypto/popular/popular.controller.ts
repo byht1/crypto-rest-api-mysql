@@ -1,6 +1,7 @@
 import { currencyCryptoData } from "api";
 import { trend } from "api/coinPaprika";
 import { pool, tableName } from "app";
+import { createError } from "helpers";
 import { TData, TRouterFn } from "type";
 import { averageValue, resetData } from "./popular.service";
 
@@ -22,7 +23,12 @@ export const crypto: TRouterFn = async (req, res) => {
   )} ${apiName ? `AND api = "${apiName}"` : ""}`;
 
   pool.query(query, queryTrend, async (err, result) => {
-    if (err) throw err;
+    if (err) throw createError(500);
+
+    if (!result[0])
+      res
+        .status(400)
+        .json({ message: "Вибачте але ми не знайшли такої валюти" });
 
     const el: TData = result[0] ?? { date: 0 };
 
