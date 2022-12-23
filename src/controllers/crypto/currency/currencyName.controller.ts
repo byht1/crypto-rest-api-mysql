@@ -1,4 +1,4 @@
-import { createError } from './../../../helpers/createError';
+import { createError } from "./../../../helpers/createError";
 import { currencyCryptoData } from "api";
 import { pool, tableName } from "app";
 import { TData, TRouterFn } from "type";
@@ -13,12 +13,16 @@ export const currencyName: TRouterFn = async (req, res) => {
   }`;
 
   pool.query(query, name.toUpperCase(), async (err, result) => {
-    if (err) throw createError(500)
+    if (err) throw createError(500);
 
-    if (!result[0])
+    if (!result[0]) {
+      console.log(1111111111111);
       res
         .status(400)
         .json({ message: "Вибачте але ми не знайшли такої валюти" });
+      return;
+    }
+    console.log(22222222);
 
     const el: TData = result[0] ?? { date: 0 };
 
