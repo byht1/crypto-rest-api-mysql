@@ -11,7 +11,7 @@ import { currencyCryptoData } from "api";
 dotenv.config();
 
 const {
-  PORT = 5004,
+  PORT = 5000,
   DB_USER,
   DB_PASSWORD,
   DB_NAME,

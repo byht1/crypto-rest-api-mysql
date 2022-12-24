@@ -40,6 +40,8 @@ export const crypto: TRouterFn = async (req, res) => {
 
     if (isNeedUpdateData) return;
 
+    // const dataSearch = result.filter((x) => trend.includes(x.symbol));
+
     const averageResult = apiName ? result : averageValue(result);
 
     res.status(201).json(averageResult);

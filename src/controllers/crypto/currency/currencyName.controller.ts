@@ -11,7 +11,6 @@ export const currencyName: TRouterFn = async (req, res) => {
   if (!name) createError(400, "Валюта не вказана");
 
   const arrName = name.split(",").map((x) => x.toLocaleUpperCase());
-  console.log("🚀  arrName", arrName);
 
   const query = `SELECT * FROM ${tableName} WHERE symbol = ? ${
     arrName[1]
@@ -24,11 +23,8 @@ export const currencyName: TRouterFn = async (req, res) => {
         }, "")
       : ""
   } ${apiName ? `AND api = "${apiName}"` : ""}`;
-  console.log("🚀  query", query);
-  // ${arrName[0]}
 
-  pool.query(query, arrName, async (err, result) => {
-    console.log("🚀  result", result);
+  pool.query(query, arrName, async (err, result: TData[]) => {
     if (err) throw createError(500);
 
     if (!result[0]) {
@@ -48,7 +44,9 @@ export const currencyName: TRouterFn = async (req, res) => {
 
     if (isNeedUpdateData) return;
 
-    const averageResult = apiName ? result : averageValue(result);
+    const dataSearch = result.filter((x) => arrName.includes(x.symbol));
+
+    const averageResult = apiName ? dataSearch : averageValue(dataSearch);
 
     res.status(201).json(averageResult);
   });
